@@ -24,7 +24,7 @@ q <- paste0("SELECT top 20 [DATE_TIME], '", wi$WELL_KEY[1],"' as WELL_KEY,
 str <- paste0('driver=SQLServer;',
               'server=enertia01;',
               'database=HEC_Enertia;',
-              'trusted_connection=true')
+              'trusted_connection=yes')
 
 # query 
 cn <- RODBC::odbcDriverConnect(str)
