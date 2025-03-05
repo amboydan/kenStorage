@@ -21,7 +21,7 @@ q <- paste0("SELECT top 20 [DATE_TIME], '", wi$WELL_KEY[1],"' as WELL_KEY,
       where [WELL_KEY] like '", wi$WELL_KEY[1], "%' ",
             "group by DATE_TIME order by DATE_TIME")
 
-str <- paste0('driver={SQL Server};',
+str <- paste0('driver=SQLServer;',
               'server=enertia01;',
               'database=HEC_Enertia;',
               'trusted_connection=true')
