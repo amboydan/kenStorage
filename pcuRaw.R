@@ -43,17 +43,17 @@ prd$TbgPress[is.na(prd$TbgPress)] <- 0
 
 production <- left_join(prd, wi, by = 'WELL_KEY')
 
-
-str <- paste0('driver={SQL Server};',
-              'server=ancsql04;',
-              'database=Gas_Forecasting_Sandbox;',
-              'trusted_connection=true')
-
-cn <- RODBC::odbcDriverConnect(str)
-RODBC::sqlClear(cn, sqtable = 'pcu_storage_all')
-RODBC::sqlSave(cn,
-               production,
-               rownames = F,
-               append = T,
-               tablename = 'pcu_storage_all')
-RODBC::odbcClose(cn)
+write.csv(production, 'production.csv', row.names = F)
+# str <- paste0('driver={SQL Server};',
+#               'server=ancsql04;',
+#               'database=Gas_Forecasting_Sandbox;',
+#               'trusted_connection=true')
+# 
+# cn <- RODBC::odbcDriverConnect(str)
+# RODBC::sqlClear(cn, sqtable = 'pcu_storage_all')
+# RODBC::sqlSave(cn,
+#                production,
+#                rownames = F,
+#                append = T,
+#                tablename = 'pcu_storage_all')
+# RODBC::odbcClose(cn)
