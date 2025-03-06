@@ -15,4 +15,4 @@ q <- paste0("select * from pcu_storage_all")
 cn <- RODBC::odbcDriverConnect(str)
 prd <- RODBC::sqlQuery(cn, q)
 
-write.csv(prd, 'prd.csv', row.names = F)
+write.csv(prd, '/drt/kenStorage/kenStorage/prd.csv', row.names = F)
