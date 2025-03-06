@@ -12,7 +12,7 @@ str <- paste0(
 
 q <- paste0("select top ", 
             n, 
-            " from pcu_storage_all")
+            " * from pcu_storage_all")
 
 cn <- RODBC::odbcDriverConnect(str)
 prd <- RODBC::sqlQuery(cn, q)
