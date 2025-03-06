@@ -10,9 +10,7 @@ str <- paste0(
   "TrustServerCertificate=yes"
 )
 
-q <- paste0("select top ", 
-            n, 
-            " * from pcu_storage_all")
+q <- paste0("select * from pcu_storage_all")
 
 cn <- RODBC::odbcDriverConnect(str)
 prd <- RODBC::sqlQuery(cn, q)
