@@ -7,7 +7,7 @@ wi <- data.frame(WELL_KEY = '50.0603.0001',
                  WELL_NAME = 'PC 4',
                  WELL_RES = 'BG.51-5_ST.45-0')
 
-q <- paste0("SELECT top 20 [DATE_TIME], '", wi$WELL_KEY[1],"' as WELL_KEY,
+q <- paste0("SELECT [DATE_TIME], '", wi$WELL_KEY[1],"' as WELL_KEY,
       sum([GAS_PRODUCTION_VOLUME]) as Gas,
       sum([OIL_PRODUCTION_VOLUME]) as Oil,
       sum([WATER_PRODUCTION_VOLUME]) as Water,
