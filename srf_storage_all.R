@@ -36,6 +36,7 @@ for(i in 1:nrow(wi)) {
     injEn = wellInjectionEnertia(well_name)
     injUom = wellInjectionUOM(well_name)
     inj = rbind(injEn, injUom)
+    inj$Well = wi[i, 'well'] 
     
     prd_list[[length(prd_list) + 1]] = inj
     
@@ -43,8 +44,16 @@ for(i in 1:nrow(wi)) {
     prodEn = wellProductionEnertia(well_name)
     prodUom = wellProductionUOM(well_name)
     prod = rbind(prodEn, prodUom)
+    prod$Well = wi[i, 'well']
     
     prd_list[[length(prd_list) + 1]] = prod
   }
   print(i)
 }
+
+all_prd <- do.call(rbind, prd_list) |> 
+  dplyr::group_by(Asset, Field, Well, Date) |>
+  dplyr::summarise(Gas = sum(Gas), Inj = sum(Inj), 
+                   TP = sum(TP), IA = sum(IA), 
+                   OA = sum(OA))
+check <- all_prd |> padr::pad()
